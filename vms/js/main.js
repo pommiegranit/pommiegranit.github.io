@@ -3,21 +3,24 @@
 
   $(document).ready(function(){
 
+    $("#vms #action").text("getting data...");
     /* get the notifications */
     $.get( "https://script.google.com/macros/s/AKfycbxOpg9sYSdlvVITtTOJSjfJxC8zG_DL4fMxgDPe676aSS4NZ2s/exec", function( data ) {
       /* keep only driver notifications */
       for (x = 0; x < data.length; x++){
         if (data[x].audience.toLowerCase() == "drivers") notifications.push(data[x]);
       }
+
       options = {
         enableHighAccuracy: false,
         timeout: 5000,
-        maximumAge: 1000*60*3
+        maximumAge: 1000*5
       };
 
+      $("#vms #action").text("getting location");
       id = navigator.geolocation.watchPosition(show_active, error, options);
-    });
 
+    });
   });
 
   function error(err) {
@@ -25,6 +28,8 @@
   }
 
   function show_active(position){
+
+    $("#vms .inform").removeClass("hide");
 
     console.log(position);
     var currentDistance = 999;
@@ -38,8 +43,6 @@
     }
 
     var active = notifications[active_note];
-
-    $("#vms #initial").text("vicroads").removeClass("hide");
     $("#vms #location").text(transform(active.location)).addClass("hide");
     $('#vms #timing').text(transform(active.timing)).addClass("hide");
     $('#vms #whattoexpect').text(transform(active.whattoexpect)).addClass("hide");
@@ -48,7 +51,7 @@
 
     currentIntervalId = setInterval( function()
     {
-      $("#vms #initial").addClass("hide");
+      $("#vms .inform").addClass("hide");
       if (!$("#vms #location").hasClass("hide")){
         $("#vms #location").addClass("hide");
         $("#vms #whattoexpect").removeClass("hide");
