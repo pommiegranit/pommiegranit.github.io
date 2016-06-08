@@ -14,7 +14,7 @@
       options = {
         enableHighAccuracy: false,
         timeout: 5000,
-        maximumAge: 1000*5
+        maximumAge: 1000*60*3 
       };
 
       $("#vms #action").text("getting location");
