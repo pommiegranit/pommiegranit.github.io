@@ -12,7 +12,7 @@
       options = {
         enableHighAccuracy: false,
         timeout: 5000,
-        maximumAge: 1000*5
+        maximumAge: 1000*60*3
       };
 
       id = navigator.geolocation.watchPosition(show_active, error, options);
