@@ -93,12 +93,17 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #vms {
+  box-sizing: border-box;
   display: table;
   width: 100%;
   max-width: 414px;
-  height: 90vh;
-  max-height: 700px;
+  height: 100vh;
   margin: 0;
   padding: 15px;
   background: #202020;
