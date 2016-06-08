@@ -1,0 +1,5 @@
+@font-face {
+  font-family: 'VMS';
+  src: url('VMS.woff') format('woff'),
+       url('VMS.ttf') format('truetype'); /* Safari, Android, iOS */
+}
